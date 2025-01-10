@@ -14,7 +14,7 @@ function runGame() {
     correct = checkGuess(guessNumber, target);
   } while (!correct);
   alert(
-    `You got it!\n\n The number was ${target}.\n\n It took you ${numTries} tries to guess it correctly.`
+    `Congratualation!\n\n The number was ${target}.\n\n It took you ${numTries} tries to guess it correctly.`
   );
 }
 
