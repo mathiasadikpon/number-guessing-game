@@ -1,0 +1,13 @@
+body {
+  text-align: center;
+  background-image: url(./banner.png);
+  background-repeat: no-repeat;
+  background-size: 100vw 70vh;
+
+  background-position-y: bottom;
+  background-attachment: fixed;
+}
+button{
+    padding: 1vw;
+    font-size: larger;
+}
