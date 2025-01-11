@@ -9,6 +9,9 @@ function runGame() {
     guessString = prompt(
       "The guessing number is  between 1 and 100 both inclusive \n\n what is your number? "
     );
+    if (guessString === null) {
+      return;
+    }
     guessNumber = +guessString;
     numTries++;
     correct = checkGuess(guessNumber, target);

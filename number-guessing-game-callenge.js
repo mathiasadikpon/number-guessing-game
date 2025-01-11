@@ -4,6 +4,8 @@ function runGame() {
   let guessNumber = 0;
   let correct = false;
   let numTries = 0;
+  let guessList = [];
+  let lastGuess;
 
   do {
     guessString = prompt(
@@ -14,14 +16,15 @@ function runGame() {
     }
     guessNumber = +guessString;
     numTries++;
-    correct = checkGuess(guessNumber, target);
+    correct = checkGuess(lastGuess, guessNumber, target);
+    lastGuess = guessNumber;
   } while (!correct);
   alert(
     `Congratualation!\n\n The number was ${target}.\n\n It took you ${numTries} tries to guess it correctly.`
   );
 }
 
-function checkGuess(guessNumber, target) {
+function checkGuess(lastGuess, guessNumber, target) {
   let correct = false;
   if (isNaN(guessNumber)) {
     alert(
@@ -31,12 +34,16 @@ function checkGuess(guessNumber, target) {
     alert(
       "Your number is out of range.\n\n Please enter a number in the 1-100 range."
     );
-  } else if (guessNumber > target) {
-    alert("Your number is too large!");
-  } else if (guessNumber < target) {
-    alert("Your number is too small!");
   } else {
-    correct = true;
+    let l = Math.abs(lastGuess - target);
+    let g = Math.abs(guessNumber - target);
+    if (g === 0) {
+      correct = true;
+    } else if (g <= l) {
+      alert("Getting warmer!");
+    } else if (g > l) {
+      alert("Getting Colder!");
+    }
   }
   return correct;
 }
